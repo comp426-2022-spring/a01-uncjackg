@@ -17,8 +17,14 @@ const port = process.env.PORT || 3000
 
 // If there is an error, put it on the console error, return, and exit with error code 1. 
 // Do not be nice about exiting.
-
-
+const data = () => {
+  try {
+    const data = fs.readFileSync('./www/index.html', 'utf-8')
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 
 
@@ -31,7 +37,7 @@ const port = process.env.PORT || 3000
 const server = http.createServer((req, res) => {
   res.statusCode = 200
   res.setHeader('Content-Type', 'text/html')
-  res.end('www/index.html')
+  res.end(data)
 })
 
 

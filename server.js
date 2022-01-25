@@ -23,6 +23,7 @@ const data = () => {
     return data
   } catch (err) {
     console.error(err)
+    process.exit(1)
   }
 }
 
